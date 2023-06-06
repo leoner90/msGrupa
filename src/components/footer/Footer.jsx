@@ -1,4 +1,5 @@
 import './footer.scss'
+import SetObserver from '../../views/js/observer.js'
 import { Link } from "react-scroll";
 import Logo from '../header/Logo.jsx'
 import React, { useEffect } from "react";
@@ -22,28 +23,13 @@ function linkGenerator( id , name){
 
 function Footer() {
 
-  let callback = function(entries, observer) {
-    entries.forEach(entry => {
-      if (entry.intersectionRatio > 0) {
-        document.getElementById('footerContacts').classList.add('animation');
-        let unobserve = document.querySelector("#Footer");
-        observer.unobserve(unobserve)
-      } 
-    });
-  };
-     
-  let options = {
-    root: document.querySelector("#Footer"),
-    rootMargin: "0px",
-    threshold: 0.2,
-  };
-    
-  let observer = new IntersectionObserver(callback, options);
+  function observerCallBack(){
+    document.getElementById('footerContacts').classList.add('animation');
+  }
 
   useEffect(()=>{
-    let target = document.querySelector("#Footer");
-    observer.observe(target);
-  });
+    SetObserver('Footer', 0.2 , 0, observerCallBack);
+  }, []);
 
 
   function ContactSlot (icon, headerText , body) {

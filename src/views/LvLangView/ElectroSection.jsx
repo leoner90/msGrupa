@@ -1,34 +1,16 @@
 import '../css/electricalWorks.scss'
 import React, { useEffect } from "react";
 import WorksWeDo from '../../components/worksWeDo/WorksWeDo.jsx'
+import SetObserver from '../js/observer.js'
 
 function ElectroSection() {
-
-
-    let callback2 = function(entries, observer) {
-        entries.forEach(entry => {
-          if (entry.intersectionRatio > 0) {
-            document.getElementById('ElectroWorksWeDoWrapper').classList.add('electroWorksTransit');
-            let unobserve = document.querySelector("#electroWorks");
-            observer.unobserve(unobserve)
-          } 
-        });
-      };
-
-
-    let options2 = {
-        root: document.querySelector("#electroWorks"),
-        rootMargin: "0px",
-        threshold: 0.3,
-      };
-        
-      let observer = new IntersectionObserver(callback2, options2);
+      function observerCallBack(){
+        document.getElementById('ElectroWorksWeDoWrapper').classList.add('electroWorksTransit');
+      }
     
       useEffect(()=>{
-        let target = document.querySelector("#electroWorks");
-        observer.observe(target);
-      });
-
+        SetObserver('electroWorks', 0.3 , 0, observerCallBack);
+      }, []);
 
 
     return (

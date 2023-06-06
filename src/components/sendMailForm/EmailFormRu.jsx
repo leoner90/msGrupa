@@ -4,7 +4,7 @@ import React, {useState } from 'react';
 import './emailForm.scss'
 
 function EmailForm () {
-    let url = `https://cvportfolio.online/portfolio/msgrupa/BackEnd/sendEmail.php`;
+    let url = `https://cvportfolio.online/portfolio/msgrupa/BackEnd/123.php`;
     const [senderName, setSenderName] = useState('');
     const [senderSurname, setSenderSurname] = useState('');
     const [userMsg, setuserMsg] = useState('');
@@ -111,36 +111,37 @@ function EmailForm () {
                 <div className='NameSectionWrapper'>
                     <div className='NameLabel'>Имя Фамилия *</div>
                     <div className='formFullNameWrapper'>
-                        <input type="text" value={senderName} id="fname" name="firstname" placeholder="Имя" onChange={(e)=> setSenderName(e.target.value)}/>
-                        <input type="text" value={senderSurname} id="lname" name="lastname" placeholder="Фамилия" onChange={(e)=> setSenderSurname(e.target.value)}/>
+                        <input required type="text" value={senderName} id="fname" name="firstname" placeholder="Имя" onChange={(e)=> setSenderName(e.target.value)}/>
+                        <input required type="text" value={senderSurname} id="lname" name="lastname" placeholder="Фамилия" onChange={(e)=> setSenderSurname(e.target.value)}/>
                     </div>
                 </div>
 
                 <div className='NameSectionWrapper'>
                     <div className='NameLabel'>Номер телефона *</div>
                     <div className='formFullNameWrapper'>
-                        <input type="text" value={userPhone}  name="phone" placeholder="Номер телефона" onChange={(e)=> setUserPhone(e.target.value)}/>
+                        <input required type="text" value={userPhone}  name="phone" placeholder="Номер телефона" onChange={(e)=> setUserPhone(e.target.value)}/>
                     </div>
                 </div>
 
                 <div className='NameSectionWrapper'>
                     <div className='NameLabel'>Э-почта *</div>
                     <div className='formFullNameWrapper'>
-                        <input type="text" value={userEmail}  name="email" placeholder="Э-почта" onChange={(e)=> setUserEmail(e.target.value)}/>
+                        <input required type="text" value={userEmail}  name="email" placeholder="Э-почта" onChange={(e)=> setUserEmail(e.target.value)}/>
                     </div>
                 </div>
 
                 <div className='NameSectionWrapper messageWraper'>
                     <div className='NameLabel'>Сообщение*</div>
                     <div className='formFullNameWrapper textAreaWrapper'>
-                        <textarea value={userMsg} placeholder="Сообщение" onChange={(e)=> setuserMsg(e.target.value)}></textarea>
+                        <textarea required value={userMsg} placeholder="Сообщение" onChange={(e)=> setuserMsg(e.target.value)}></textarea>
                     </div>
                 </div>
 
-                <button className='ContactFormSubmitBtn' type="submit" onClick={(e)=> sendEmail(e)}> 
+                <button className='ContactFormSubmitBtn' type="submit" onSubmit={(e)=> sendEmail(e)}> 
                     <FontAwesomeIcon className='faEnvelopeSendMsg' icon={faEnvelope} /> 
                     ОТПРАВИТЬ
                 </button>
+                
             </form>
         </div>
     )

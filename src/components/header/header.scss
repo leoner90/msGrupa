@@ -34,11 +34,20 @@
   font-weight: bold;
   margin-right: 5px;
   cursor: pointer;
+  &:hover {
+    color: #0a002e;
+  }
 }
 
-.navBarLinksWrapper > a::after {
+.navBarLinksWrapper > a::before {
+  padding-right: 5px;
     content: ' | ';
 }
+
+.navBarLinksWrapper >a:first-of-type::before {
+  content: none;
+}
+
 .hidden {
   display: none;
 }
@@ -203,9 +212,7 @@
     display: none;
   }
   
-  .navBarLinksWrapper >a:last-of-type::before {
-    content: none;
-  }
+
 
   .MenuShowHideBtn .logoWrapper {
     flex: 1;
@@ -293,7 +300,7 @@
       cursor: pointer;
       display: block;
 
-      &::after {
+      &::before {
         content: '';
       }
     }

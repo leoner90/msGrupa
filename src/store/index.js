@@ -1,21 +1,29 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { api } from './services'
-import userSlice from './slices/user'
-import ShopSlice from './slices/shop'
-
+import contactsSlice from './slices/contacts'
+import sendMailSlice from './slices/sendMail'
+import sliderImages from './slices/sliderImages'
 export const store = configureStore({
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+  //   immutableCheck: { warnAfter: 128 },
+  //   serializableCheck: { warnAfter: 128 },
+  // }),
   reducer: {
     [api.reducerPath]: api.reducer,
-    user: userSlice,
-    shop: ShopSlice,
+    contacts: contactsSlice,
+    sendMail: sendMailSlice,
+    sliderImages: sliderImages,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware(),
     api.middleware,
+    
   ],
 })
 
 setupListeners(store.dispatch)
 
 export default store;
+
+ 

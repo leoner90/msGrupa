@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+
 import Contacts from '../views/LvLangView/ContactsSection.jsx'
-import AboutSection from '../views/LvLangView/AboutSection.jsx'
+// import AboutSection from '../views/LvLangView/AboutSection.jsx'
 import ElectroSection from '../views/LvLangView/ElectroSection.jsx'
 import SolarSection from '../views/LvLangView/SolarSection.jsx'
 import GallerySection from '../views/LvLangView/GallerySection.jsx'
@@ -18,27 +20,9 @@ import MapSectionRu from '../views/RuLangView/MapSection.jsx'
 import FooterRu from '../components/footer/FooterRu.jsx'
 
 
-
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) === ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
- 
-
 const Router = () => {
-    let language = getCookie("currentLanguage");
-    if (language === 'ru') {
+  let curentLanguage = useSelector(state => state.contacts.currentLanguage);
+  if (curentLanguage === 'ru') {
         return (
             <div>
                 <AboutSectionRu /> 
@@ -53,7 +37,7 @@ const Router = () => {
     } else {
         return(
             <div>
-                <AboutSection /> 
+                <AboutSectionRu /> 
                 <SolarSection />
                 <ElectroSection />
                 <MapSection />
