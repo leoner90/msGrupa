@@ -39,6 +39,7 @@ const slickSettingGallerySection= {
       {
           breakpoint: 992,
           settings: {
+           
             slidesToShow: 2,
             slidesToScroll: 2,
             infinite: true,
@@ -49,6 +50,9 @@ const slickSettingGallerySection= {
         {
           breakpoint: 767,
           settings: {
+ 
+            centerMode: true,
+            centerPadding: '20px',
             slidesToShow: 1,
             slidesToScroll: 1,
             infinite: true,
@@ -60,4 +64,24 @@ const slickSettingGallerySection= {
   ]
 };
 
-export {slickSettingAboutSection, slickSettingGallerySection} ;
+
+const slickSettingPopUp = { 
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  swipe: true,
+  arrows: true,
+  rows: 1,
+  dots: true,
+  responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: false,           
+        }
+      }
+  ]
+};
+
+export {slickSettingAboutSection, slickSettingGallerySection, slickSettingPopUp} ;

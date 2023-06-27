@@ -1,38 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { api } from '../services'
+ 
 //init
 const initialState = {
-  errors: [],
-  success: 0
+  errors: false,
+  success: false,
 }
-
+ 
 //change
 export const ShopSlice = createSlice({
   name: 'Mail',
   initialState,
   //local manipulation
   reducers: {
-    setPlantInHand: (state, action) => {
-      state.money = action.payload
+    setEmailStatus: (state, action) => {
+      state.success = action.payload;
+      state.errors = action.payload;
     },
   },
   //to call after mutation e.g. DB call
   extraReducers: builder => {
     builder.addMatcher(api.endpoints.sendEmail.matchFulfilled, (state, action) => {
-      console.log(action.payload)
-      
-      if(action.payload === 200) {
-        state.errors = [];
-        state.success = 200;
-      } else {
-        state.errors = action.payload;
-        state.success = 'error';
-      }
+      state.errors = action.payload['errors'];
+      state.success =  action.payload['success'];
       
     })   
   },
 })
 
 //export
-export const { setPlantInHand } = ShopSlice.actions
+
+export const {setEmailStatus } = ShopSlice.actions
 export default ShopSlice.reducer

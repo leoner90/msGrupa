@@ -1,6 +1,8 @@
 @import '../../variables';
 
-input[type=text], select, textarea {
+input[type=text], select, textarea,
+input[type=email],
+input[type=number] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -10,19 +12,7 @@ input[type=text], select, textarea {
     margin-bottom: 16px;
     resize: vertical;
   }
-  
-  input[type=submit] {
-    background-color: #04AA6D;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  input[type=submit]:hover {
-    background-color: #45a049;
-  }
+ 
 
 #loaderWrapper,
 #SuccesWrapper {
@@ -133,7 +123,7 @@ input[type=text], select, textarea {
 }
 
 .ContactFormSubmitBtn {
-    background-color: #2b9b1f !important;
+    background-color: #2b9b1f ;
     font-weight: bold;
     width: 100%;
     color: white;
@@ -141,16 +131,27 @@ input[type=text], select, textarea {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    &:hover {
+      background-color: #217518 ;
+    }
 }
 //Animation
 @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
+  100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+}
   
   .NameSectionWrapper {
     border: 1px solid #ccc;
@@ -200,23 +201,48 @@ input[type=text], select, textarea {
 
   @include forSmallDesktop {
     .errMsg,
-    .success{
+    .success,
+    .errorAwesomeIcon{
       font-size: 1.2vw;
     }
   }
   
   @include for-tablet-design {
+    .recaptchaClass {
+   
+      margin: 0 auto;
+      
+    }
+
+    
     .errMsg,
-    .success{
+    .success,
+    .errorAwesomeIcon{
       font-size: 1.7vw;
     }
   }
   
   @include for-mobile-design {
     .errMsg,
-    .success{
+    .success,
+    .errorAwesomeIcon{
       font-size: 3vw;
     }
   }
 
-  
+  .recaptchaClass {
+   
+    // margin-left: 100%;
+    // transform: translateX(-100%);
+    
+  }
+
+  .grecaptcha-badge {
+    // box-shadow: none !important;
+    // position: static !important;
+    margin: 10px;
+  }
+.grecaptcha-badge {
+  margin-left: 0;
+  margin-right: 0;
+}

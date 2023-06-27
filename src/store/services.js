@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
-     // let url = `https://cvportfolio.online/portfolio/msgrupa/BackEnd/sendEmail.php`;
-  baseUrl: 'http://localhost:80/',
+  //  `https://msgrupa.lv/backEnd/`;
+  baseUrl: `http://localhost/backEnd/`,
   prepareHeaders: (headers) => {
     //headers.set('Content-Type', 'application/json');
     return headers
@@ -18,7 +18,7 @@ export const api = createApi({
   tagTypes: ['PROJECTS', 'KEYS'],
 
   endpoints: builder => ({
-    getTestimonials: builder.mutation({
+    getGallery: builder.mutation({
       query: data => {
         let formData = new FormData();  
         formData.append("data", data);
@@ -27,7 +27,7 @@ export const api = createApi({
         return {
           mode: "cors",
           enctype: 'multipart/form-data',
-          url: 'index.php/user',
+          url: 'index.php?gallery',
           method: 'POST',
           body: formData
         }
@@ -39,7 +39,7 @@ export const api = createApi({
         return {
           mode: "cors",
           enctype: 'multipart/form-data',
-          url: 'index.php/mail',
+          url: 'index.php?mail',
           method: 'POST',
           body: data
         }
@@ -50,5 +50,5 @@ export const api = createApi({
 })
 
 export const {
-  useGetTestimonialsMutation,useSendEmailMutation 
+  useGetGalleryMutation,useSendEmailMutation 
 } = api

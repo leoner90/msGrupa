@@ -12,6 +12,10 @@
 
 }
 
+.contactSlotText {
+  white-space: pre-line ;
+}
+
 .ContactsDetails {
   flex: 1;
   text-align: left;
@@ -27,20 +31,20 @@
     display: flex;
     flex: 1;
     flex-wrap: wrap;
-
+ 
 }
+ 
 
 .ContactsWrapper > div {
     padding-bottom: 3px;
     box-shadow: 0 4px 2px -3px #dae2e9;
-    flex: 1 0 40%; 
+    flex: 1 90%;
     display: flex;
     align-items: center;
     margin: 3.5%;
 }
 
 .ContactFormHeader {
-    // font-family: 'Kaushan Script', cursive;
     color: #03898b;
     font-size: 1.4vw;
     text-align: center;

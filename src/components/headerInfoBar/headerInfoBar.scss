@@ -98,6 +98,10 @@
   animation: cookiesDisaper 1s ease-out forwards ;
  }
 
+ .displayNoneNoAnimation {
+  display: none;
+ }
+
 @keyframes cookiesDisaper {
   0% {
     opacity: 1;

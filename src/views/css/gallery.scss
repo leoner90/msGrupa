@@ -73,3 +73,29 @@
 }
 
 
+.gallerySectionWrapper {
+    *:focus {
+        outline: none;
+    }
+    .slick-prev:before, .slick-next:before {
+    font-size: 2vw;
+    }
+
+    .slick-prev, .slick-next {
+        width: 4vw;
+    }
+
+    .slick-prev {
+        left: -3vw;
+        padding: 0 1vw;
+    }
+
+    .slick-next {
+        right: -3vw;
+        padding: 0 1vw;
+    }
+
+    .slick-slider {
+        margin: 0 3vw !important;
+    }
+}

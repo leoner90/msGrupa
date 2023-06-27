@@ -7,16 +7,14 @@ import SliderPopUp  from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Popup.scss'
- 
+import {slickSettingPopUp} from "../../views/js/SlickSettings.js"
 function ViewPostModal (props) {
+    
     const sliderRef = useRef();
     
     //Close Modal
     function closeReadMoremodal() {
-        let el = document.getElementById('viewPostModalWrapper');
-        el.style.display = "none";  
-        const body = document.querySelector("body");
-        body.style.overflow = "auto";
+        props.setShowModal(false)
         document.body.style.overflow = 'visible'; 
         document.getElementById("html").style.overflow = 'visible';
     }
@@ -24,47 +22,24 @@ function ViewPostModal (props) {
     document.addEventListener("keydown", escapePressed, false);
 
     function escapePressed(e) {
-        var keyCode = e.keyCode;
-        if(keyCode===27) {
+        let keyCode = e.keyCode;
+        let esc = 27;
+        if(keyCode === esc) {
             closeReadMoremodal();
         }
     }
  
-     if(props.currentIndex) {
+    //Scroll to curent IMG , which was cliked
+    if(props.currentIndex !== false) {
         sliderRef.current.slickGoTo(props.currentIndex)
-     }
- 
-   
-    const setup = { 
-        // verticalSwiping: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        swipe: true,
-        arrows: true,
-        rows: 1,
-        initialSlide: props.currentIndex,
-        dots: false,
-        responsive: [
-            {
-              breakpoint: 992,
-              settings: {
-                arrows: false,   
-
-              }
-            }
-        ]
-      };
-     
-  
+    }
+    
  
     return (
-        <div id="viewPostModalWrapper" className="viewPostModalWrapper" >
+        <div id="viewPostModalWrapper" className="viewPostModalWrapper"  style={props.showModal ? {display: 'block'} : {display: 'none'} }>
              <div className='viewPostModalContent'>
-             <button className='postViewCloseBtn'  onClick={()=> closeReadMoremodal()} > X  </button> 
-             {/* AIZVĒRT */}
-             <SliderPopUp {...setup} ref={sliderRef}>   
+                <button className='postViewCloseBtn'  onClick={()=> closeReadMoremodal()} > X  </button> 
+                <SliderPopUp {...slickSettingPopUp} ref={sliderRef}>   
                     {props.allImg.map(function(item, i){                  
                         return (
                             <div className='PopUpContentWrapper' key={i} >

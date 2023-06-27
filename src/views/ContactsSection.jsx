@@ -1,15 +1,19 @@
-import '../css/Contacts.scss'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faEnvelope,faMapLocationDot , faClock } from '@fortawesome/free-solid-svg-icons'
-import EmailForm from '../../components/sendMailForm/EmailFormRu.jsx';
-
+import EmailForm from '../components/sendMailForm/EmailForm.jsx';
+import './css/Contacts.scss'
+import  {ContactsContentByLanguage} from "./MultiLanguageContent/MultiLanguageContentGenerator.jsx";
+ 
 
 function Contacts() {
-
+    let content = ContactsContentByLanguage();
     function ContactSlot (icon, headerText , body) {
         return (
             <div>
-                <div className='contactSlotImg'><FontAwesomeIcon className='contactsFontAwesome' icon={icon} /></div>
+                <div className='contactSlotImg'>
+                    <FontAwesomeIcon className='contactsFontAwesome' icon={icon} />
+                </div>
                 <div className='contactSlotText'>
                     <h4 className='contactSlotHeader'> {headerText} </h4>
                     <p> {body} </p>
@@ -26,26 +30,24 @@ function Contacts() {
             </div>
             <div className='ContactsDetails'>  
                 <h3 className='ContactFormHeader'>
-                    Контактная информация
+                    {content.ContactFormHeader}
                 </h3>
                 <div className='ContactsWrapper'> 
-                    {ContactSlot(faPhone ,"Номер телефона: ",'+371 2914 5975')}
-                    {ContactSlot(faEnvelope ,"Э-почта: ",'msgrupa.riga@gmail.com')}
-                    {ContactSlot(faMapLocationDot ,'Юридический Адрес: ' , 'Festivāla iela 1 , Rīga, LV-1057')}
+                    {ContactSlot(faPhone ,content.phone,'+371 2914 5975')}
+                    {ContactSlot(faEnvelope ,content.mail,'msgrupa.riga@gmail.com')}
+                    {ContactSlot(faMapLocationDot ,content.address , 'Festivāla iela 1 , Rīga, LV-1057')}
                     <div className='openTime'>
                         <div className='contactSlotImg'>
                             <FontAwesomeIcon className='contactsFontAwesome' icon={faClock} />
                         </div>
                         <div className='contactSlotText'>
-                            <h4 className='contactSlotHeader'> Время работы: </h4>
-                             <p>Понедельник - Пятница: с 8:00 до 19:00 <br />
-                                 Суббота - : Выходной <br />
-                                 Воскресенье - Выходной.
+                            <h4 className='contactSlotHeader'> {content.contactSlotHeader}</h4>
+                             <p>
+                                {content.contactSlotBody}
                              </p>
                         </div>
                     </div>
                 </div>       
-        
             </div>
         </div>
 
@@ -57,6 +59,7 @@ function Contacts() {
                 allowFullScreen="" 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade">
+                    
             </iframe>
         </div>
     </div>
