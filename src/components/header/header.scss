@@ -21,10 +21,8 @@
   letter-spacing: 0.65px;
   font-size: 0.95vw;
   font-style: italic;
-  // font-weight: bold;
   display: flex;
   align-items: center;
-
 }
 
 .navBarLinksWrapper > a {
@@ -34,6 +32,7 @@
   font-weight: bold;
   margin-right: 5px;
   cursor: pointer;
+
   &:hover {
     color: #0a002e;
   }
@@ -65,7 +64,7 @@
   color: #004e61 !important;
 }
 
-  .NavBarWrapper { 
+.NavBarWrapper { 
   z-index: 99;
   transition: 0.35s;
   min-height: 95px;
@@ -90,7 +89,6 @@
   min-height: 55px !important;
   transition: 0.75s;
  
-
   & .MainLogo {
     height: 46px;
     transition: 0.5s;
@@ -131,6 +129,7 @@
   .NavBar {
        padding: 0 $base-padding-tablet;
   }
+
   .navBarLinksWrapper > a  {
     font-size: 1.2vw;
   }
@@ -142,9 +141,8 @@
 
 @include for-mobile-design {
   .NavBar  {
-       padding: 0 $base-padding-mobile ;
-       bottom: 0;
-       
+    padding: 0 $base-padding-mobile ;
+    bottom: 0;
   }
  
   .caretForMobileMenu {
@@ -162,9 +160,6 @@
   }
 }
 
- 
-
-
 //ANIMATION
 @keyframes slideInFromLeft {
   0% {
@@ -175,9 +170,11 @@
     transform: rotate(-180deg);
     filter: grayscale(100%);
   }
+
   40% {
     filter: grayscale(100%);
   }
+
   100% {
     -webkit-transform: rotate(0);
     -moz-transform: rotate(0);
@@ -192,6 +189,7 @@
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -204,19 +202,16 @@
   justify-content: center;
 }
 
-
-
 //MOBILE
 @include for-mobile-design{
   .DesktopLogo {
     display: none;
   }
-  
-
 
   .MenuShowHideBtn .logoWrapper {
     flex: 1;
   }
+
   .logoWrapper{
     justify-content: normal !important;
     padding-left: 10%;
@@ -225,8 +220,8 @@
   .MainLogo {
     height: 35px;
     width: 35px;
-   
   }
+
   .NavBar {
     justify-content: normal !important;
   }
@@ -270,6 +265,7 @@
     width: 100%;
     margin-bottom: 5px;
     padding: 10px 15px;
+
     &::after {
       content: '';
     }
@@ -282,15 +278,16 @@
   }
  
   .NavBarWrapper {
-      padding-right: 30px;
-      text-align: right;
-      background-color: #212b35;
-      min-height: 75px ;
+    padding-right: 30px;
+    text-align: right;
+    background-color: #212b35;
+    min-height: 75px ;
   }
 
   .navBarLinksWrapper {
     padding-left: 0;
     text-align: left;
+
     > a {
       font-size: 3.5vw;
       text-decoration: none;
@@ -306,4 +303,3 @@
     }
   }
 }
-

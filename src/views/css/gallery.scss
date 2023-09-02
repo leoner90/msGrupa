@@ -6,10 +6,10 @@
     min-height: 70vh;
     border-radius: 5px;
     padding: 3% $base-padding 20px $base-padding;
+
     * {
         z-index: 0 ;
     }
- 
 }
 
 .slick-dots li.slick-active button:before,
@@ -28,12 +28,7 @@
     text-align: center;
     letter-spacing: 0.5px;
     margin: 0 0 3% 0;
- 
 }
-
-
- 
-
 
 @include forSmallDesktop {
     .gallerySectionWrapper {
@@ -56,7 +51,7 @@
     }
   }
   
-  @include for-mobile-design {
+@include for-mobile-design {
     .gallerySectionWrapper {
         padding:  3%  $base-padding-mobile   20px $base-padding-mobile   ;
         min-height: 1vh;
@@ -69,14 +64,13 @@
     .galleryHeader {
         font-size: 3vw;
     }
-   
 }
-
 
 .gallerySectionWrapper {
     *:focus {
         outline: none;
     }
+    
     .slick-prev:before, .slick-next:before {
     font-size: 2vw;
     }

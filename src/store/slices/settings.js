@@ -5,7 +5,7 @@ const initialState = {
 }
 
 export const ShopSlice = createSlice({
-  name: 'Shop',
+  name: 'Setting',
   initialState,
 
   reducers: {
@@ -15,7 +15,7 @@ export const ShopSlice = createSlice({
   },
 })
 
-//export
+
 export const { setLanguage } = ShopSlice.actions
 export  {initialState}
 export default ShopSlice.reducer

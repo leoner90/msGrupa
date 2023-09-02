@@ -12,15 +12,14 @@ export const store = configureStore({
     sendMail: sendMailSlice,
     sliderImages: sliderImages,
   },
+
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware(),
     api.middleware,
-    
   ],
+  
 })
 
 setupListeners(store.dispatch)
 
 export default store;
-
- 

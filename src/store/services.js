@@ -1,10 +1,8 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
-  //  `https://msgrupa.lv/backEnd/`;
-  baseUrl: `http://localhost/backEnd/`,
+  baseUrl: `https://msgrupa.lv/backEnd/`,
   prepareHeaders: (headers) => {
-    //headers.set('Content-Type', 'application/json');
     return headers
   },
 })
@@ -22,8 +20,6 @@ export const api = createApi({
       query: data => {
         let formData = new FormData();  
         formData.append("data", data);
-        // JSON.stringify(data)
-       
         return {
           mode: "cors",
           enctype: 'multipart/form-data',
@@ -45,7 +41,6 @@ export const api = createApi({
         }
       },
     }),
-
   }),
 })
 

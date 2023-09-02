@@ -6,19 +6,18 @@ import React, { useState, useEffect } from "react";
 
 function ElectroSection() {
   let content = ElectroContentByLanguage();
-	
+	const [imagesAreLoaded, setImagesAreLoaded] = useState(false);
+  let src =  "./img/electroPower.jpg";
+
   function observerCallBack(){
     document.getElementById('ElectroWorksWeDoWrapper').classList.add('electroWorksTransit');
   }
 
-  const [imagesAreLoaded, setImagesAreLoaded] = useState(false);
-    let src =  "./img/electroPower.jpg";
-
-    useEffect(() => {
-        const img = new Image()
-        img.src = src
-        img.onload = () => setImagesAreLoaded(true)
-    }, [src])
+  useEffect(() => {
+      const img = new Image()
+      img.src = src
+      img.onload = () => setImagesAreLoaded(true)
+  }, [src])
 
 
   useEffect(()=>{
@@ -31,13 +30,12 @@ function ElectroSection() {
 
   return (
     <div id="electroWorks" className='electritionWorksWrapper'>  
-      
       {imagesAreLoaded 
-          ? 
-          <div  className='electritionWorksImg' style={{backgroundImage: 'url("./img/electroPower.jpg"'}}></div>
-          :
-          <div className='flexItem'> <div className='imgLazyLoaderElectritionMainImg' > </div>  </div> 
-        }
+        ? 
+        <div  className='electritionWorksImg' style={{backgroundImage: 'url("./img/electroPower.jpg"'}}></div>
+        :
+        <div className='flexItem'> <div className='imgLazyLoaderElectritionMainImg' > </div>  </div> 
+      }
 
       <div className='electricPowerWorks'>
         <h4 className='electricPowerWorksHeader'> {content.ElectroSectionHeader} </h4>

@@ -23,13 +23,12 @@ function EmailForm () {
     const [loaderWrapperState, setLoaderWrapperState] = useState('none');
     const [succesMsgWrapper, setSuccesMsgWrapper] = useState('none');
     const recaptchaRef = useRef();
-    
+    let errors = useSelector(state => state.sendMail.errors);
+    let success = useSelector(state => state.sendMail.success)
+
     function toggleEmailLoader() {
         setLoaderWrapperState('none');
     }
-    
-    let errors = useSelector(state => state.sendMail.errors);
-    let success = useSelector(state => state.sendMail.success)
 
     function clearAllMsgShowSuccces(){
         setSenderName('');
@@ -39,28 +38,23 @@ function EmailForm () {
         setUserPhone('');
         setErrSuccessMsg([])
         setSuccesMsgWrapper('flex');
-        
     }
 
-    useEffect(
-        () => {
-
-            if(errors && errors !== 200 ) {
-                curentLanguage === 'ru' ?   setErrSuccessMsg(errors['ru']) :  setErrSuccessMsg(errors['lv']);
-            }
-          
-            if(success === 200) {
-                setTimeout(clearAllMsgShowSuccces, 500);
-                setTimeout(toggleEmailLoader, 500);
-                
-            } else if(success === 'error')  {
-                setTimeout(toggleEmailLoader, 500);
-            }
+    useEffect( () => {
+        if(errors && errors !== 200 ) {
+            curentLanguage === 'ru' ?   setErrSuccessMsg(errors['ru']) :  setErrSuccessMsg(errors['lv']);
+        }
+        
+        if(success === 200) {
+            setTimeout(clearAllMsgShowSuccces, 500);
+            setTimeout(toggleEmailLoader, 500);
+            
+        } else if(success === 'error')  {
+            setTimeout(toggleEmailLoader, 500);
+        }
     }, [success, errors, curentLanguage]);
 
-  
-
-      async function sendEmail(e) {
+    async function sendEmail(e) {
         e.preventDefault();
         const token = await recaptchaRef.current.executeAsync();
         let formData = new FormData();
@@ -91,32 +85,32 @@ function EmailForm () {
         <div className='emailFormWrapper'>
             <h3 className='ContactFormHeader'>{content.contactFormHeader}</h3>
             <div id='loaderWrapper' style={{display: loaderWrapperState}}>
-            <div className="loader"></div>
-            <p>{content.sendingInProcess}</p>
+                <div className="loader"></div>
+                <p>{content.sendingInProcess}</p>
             </div>
 
             <div id='SuccesWrapper' style={{display: succesMsgWrapper}}>
-            <div className="success">
-            <p>
-                <FontAwesomeIcon className='successMsgAwesomeIcon'  icon={faEnvelopeCircleCheck} />
-                {content.successMsg}
-            </p>
-            </div>
-            <button className='sendOnotherMsgBtn' onClick={()=> setSuccesMsgWrapper('none')}>
-                {content.sendOneMoreMsg}   
-                <FontAwesomeIcon className='sendOnotherMsgAwasomeIcon'  icon={faPlus} />
-            </button>
+                <div className="success">
+                    <p>
+                        <FontAwesomeIcon className='successMsgAwesomeIcon'  icon={faEnvelopeCircleCheck} />
+                        {content.successMsg}
+                    </p>
+                </div>
+                <button className='sendOnotherMsgBtn' onClick={()=> setSuccesMsgWrapper('none')}>
+                    {content.sendOneMoreMsg}   
+                    <FontAwesomeIcon className='sendOnotherMsgAwasomeIcon'  icon={faPlus} />
+                </button>
             </div>
 
             <div className='errMsgAligner'>
-            {errSuccessMsg.map((err, index) => { 
-            return (
-                <p className='errMsg' key={index}>
-                    <FontAwesomeIcon className='errorAwesomeIcon' icon={faTriangleExclamation} />
-                    {err}
-                </p>
-            )
-            })}
+                {errSuccessMsg.map((err, index) => { 
+                    return (
+                        <p className='errMsg' key={index}>
+                            <FontAwesomeIcon className='errorAwesomeIcon' icon={faTriangleExclamation} />
+                            {err}
+                        </p>
+                    )
+                })}
             </div>
 
             <form className='emailForm' onSubmit={(e) => sendEmail(e)} >    
@@ -124,13 +118,15 @@ function EmailForm () {
                     <div className='NameLabel'>{content.names + ' ' +content.surname}  * </div>
                     <div className='formFullNameWrapper'>
                         <input 
-                         onInvalid = { (e) => customFormValidationTitle(e) }
-                         required type="text" value={senderName} id="fname" name="firstname" placeholder={content.names} 
-                         onChange={(e)=> {setSenderName(e.target.value);  e.target.setCustomValidity("")}}/>
+                            onInvalid = { (e) => customFormValidationTitle(e) }
+                            required type="text" value={senderName} id="fname" name="firstname" placeholder={content.names} 
+                            onChange={(e)=> {setSenderName(e.target.value);  e.target.setCustomValidity("")}}
+                        />
                         <input 
                             onInvalid = { (e) => customFormValidationTitle(e) }
                             required type="text" value={senderSurname} id="lname" name="lastname" placeholder={content.surname}  
-                            onChange={(e)=> {setSenderSurname(e.target.value); e.target.setCustomValidity("");}}/>
+                            onChange={(e)=> {setSenderSurname(e.target.value); e.target.setCustomValidity("");}}
+                        />
                     </div>
                 </div>
 
@@ -138,10 +134,10 @@ function EmailForm () {
                     <div className='NameLabel'>{content.phone}  *</div>
                     <div className='formFullNameWrapper'>
                         <input 
-                         onInvalid = { (e) => customFormValidationTitle(e) }
-                         onChange={(e)=> {setUserPhone(e.target.value); e.target.setCustomValidity("") }}
-                         required type="number" value={userPhone}  name="phone" placeholder={content.phone} 
-                         />
+                            onInvalid = { (e) => customFormValidationTitle(e) }
+                            onChange={(e)=> {setUserPhone(e.target.value); e.target.setCustomValidity("") }}
+                            required type="number" value={userPhone}  name="phone" placeholder={content.phone} 
+                        />
                     </div>
                 </div>
 
@@ -160,23 +156,22 @@ function EmailForm () {
                     <div className='NameLabel'>{content.message} *</div>
                     <div className='formFullNameWrapper textAreaWrapper'>
                         <textarea 
-                        onInvalid = { (e) => customFormValidationTitle(e) }
-                        required value={userMsg} placeholder={content.message} 
-                        onChange={(e)=> {setuserMsg(e.target.value); e.target.setCustomValidity("")}}></textarea>
+                            onInvalid = { (e) => customFormValidationTitle(e) }
+                            required value={userMsg} placeholder={content.message} 
+                            onChange={(e)=> {setuserMsg(e.target.value); e.target.setCustomValidity("")}}
+                        >
+                        </textarea>
                     </div>
                 </div>
 
-               
-                {/* msgrupa key 6LczzbkmAAAAAGFsdALrvkYgfSGIHtUpY6GNQOls 
-                localhost 6LdV3rkmAAAAAOu7dQnPLEhfbJM6b9eT-pYr-pAn*/}
                 <ReCAPTCHA
-                className='recaptchaClass'
-                sitekey={"6LdV3rkmAAAAAOu7dQnPLEhfbJM6b9eT-pYr-pAn"}
-                size="invisible"
-                ref={recaptchaRef}
-                badge="inline"
-                hl={curentLanguage ? curentLanguage : 'lv'}
-            />
+                    className='recaptchaClass'
+                    sitekey={"Captcha key here"}
+                    size="invisible"
+                    ref={recaptchaRef}
+                    badge="inline"
+                    hl={curentLanguage ? curentLanguage : 'lv'}
+                />
 
                 <button className='ContactFormSubmitBtn' type="submit"  > 
                     <FontAwesomeIcon className='faEnvelopeSendMsg' icon={faEnvelope} /> 

@@ -13,8 +13,6 @@
     overflow-x: hidden;
     position: fixed;
     z-index: 999999999 !important;
-    // opacity: 1;
-   
 }
 
 .viewPostModalContent {
@@ -60,9 +58,7 @@
             & .itemInfo {
                 animation: none !important;
                 z-index: 99;
-                border: none;
-             
-                 
+                border: none; 
             }
         }
         & > .itemInfo {
@@ -86,18 +82,14 @@
 .viewPostModalContent .slick-next:before {
     color: #333  !important;
 }
- 
- 
- 
 
 @include forSmallDesktop{
     .postViewCloseBtn {
         font-size: 2vw;
     }
+}
   
-  }
-  
-  @include for-tablet-design {
+@include for-tablet-design {
     .postViewCloseBtn {
         position: static;
         padding: 3px 15px;
@@ -122,22 +114,13 @@
         margin: 0 2%;
     
         .slick-slider  {
-         
             flex: 1;
         }
     }
-
-   
-  }
+}
   
   
-  @include for-mobile-design{
-
-    
-   
-
-    
-  }
+@include for-mobile-design{}
 
   @media screen and (orientation:landscape) and (max-width: 992px) {
     .postViewCloseBtn {
@@ -148,48 +131,46 @@
         height: 75vh;
         border-radius: 10px;
     }
+
     .PopUpContentWrapper {
-    
         & > .homePageProjectWrapper {
             margin: 0;
             height: 85vh;
         }
     }
-        .PopUpContentWrapper > .homePageProjectWrapper {
-            background-size: cover; 
-        }
 
-        .gallerySectionWrapper .slick-slider {
-            margin: 0 1.5% !important;
-        }
+    .PopUpContentWrapper > .homePageProjectWrapper {
+        background-size: cover; 
+    }
 
-        .viewPostModalContent {
-            padding: 0 50px 0 50px;
-            display: flex;
-            margin: 0;
-            flex-direction: row-reverse;
-            justify-content: center;
-            align-items: center;
-            .slick-slider  {
-                width: 1px;
-                flex: 1;
-            }
+    .gallerySectionWrapper .slick-slider {
+        margin: 0 1.5% !important;
+    }
+
+    .viewPostModalContent {
+        padding: 0 50px 0 50px;
+        display: flex;
+        margin: 0;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        
+        .slick-slider  {
+            width: 1px;
+            flex: 1;
         }
-    
+    }
 }
-
-
 
 @keyframes safariIsue {
   0% {
     opacity: 0.98;
   }
+
   100% {
     opacity: 0.99999999;
-    
   }
 }
-
 
 .viewPostModalWrapper {
     .slick-prev:before, .slick-next:before {
@@ -214,42 +195,44 @@
         margin: 0 4vw !important;
     }
 
-
     .slick-dots li button:before {
         color: #a43c3c !important;
     }
 
-
     /* hiding all bullets by default */
-.slick-dots li {
-    display: none
-}
-/* only displaying the active bullets and the 2 bullets next to it */
-.slick-dots li.slick-active,
-.slick-dots li.slick-active + li,
-.slick-dots li.slick-active + li + li {
-    display: inline-block;
-}
-/* displaying the last three bullets when slick-active class isn't applied to any li before them  */
-.slick-dots li:nth-last-child(1),
-.slick-dots li:nth-last-child(2),
-.slick-dots li:nth-last-child(3) {
-    display: inline-block;
-}
-/* hiding the last three bullets if slick-active exist before them */
-.slick-dots li.slick-active ~ li:nth-last-child(1),
-.slick-dots li.slick-active ~ li:nth-last-child(2),
-.slick-dots li.slick-active ~ li:nth-last-child(3) {
-    display: none;
-}
-/* specific conditions to always display the last three bullets */
-.slick-dots li.slick-active + li + li:nth-last-child(3),
-.slick-dots li.slick-active + li + li:nth-last-child(2),
-.slick-dots li.slick-active + li + li:nth-last-child(1),
-.slick-dots li.slick-active + li:nth-last-child(3),
-.slick-dots li.slick-active + li:nth-last-child(2),
-.slick-dots li.slick-active + li:nth-last-child(1){
-    display: inline-block;
-}
+    .slick-dots li {
+        display: none
+    }
+
+    /* only displaying the active bullets and the 2 bullets next to it */
+    .slick-dots li.slick-active,
+    .slick-dots li.slick-active + li,
+    .slick-dots li.slick-active + li + li {
+        display: inline-block;
+    }
+
+    /* displaying the last three bullets when slick-active class isn't applied to any li before them  */
+    .slick-dots li:nth-last-child(1),
+    .slick-dots li:nth-last-child(2),
+    .slick-dots li:nth-last-child(3) {
+        display: inline-block;
+    }
+
+    /* hiding the last three bullets if slick-active exist before them */
+    .slick-dots li.slick-active ~ li:nth-last-child(1),
+    .slick-dots li.slick-active ~ li:nth-last-child(2),
+    .slick-dots li.slick-active ~ li:nth-last-child(3) {
+        display: none;
+    }
+
+    /* specific conditions to always display the last three bullets */
+    .slick-dots li.slick-active + li + li:nth-last-child(3),
+    .slick-dots li.slick-active + li + li:nth-last-child(2),
+    .slick-dots li.slick-active + li + li:nth-last-child(1),
+    .slick-dots li.slick-active + li:nth-last-child(3),
+    .slick-dots li.slick-active + li:nth-last-child(2),
+    .slick-dots li.slick-active + li:nth-last-child(1){
+        display: inline-block;
+    }
 }
 

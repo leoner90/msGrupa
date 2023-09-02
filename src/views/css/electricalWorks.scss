@@ -1,41 +1,38 @@
 @import '../../variables';
 
 .electritionWorksWrapper {
-    min-height: 70vh;
-    background-color: rgb(25, 29, 41);
-    display: flex;
-    padding: 2.5% $base-padding 0 $base-padding;
-    text-align: left;
-    // overflow-x:clip ;
-    color: #fff; 
+  min-height: 70vh;
+  background-color: rgb(25, 29, 41);
+  display: flex;
+  padding: 2.5% $base-padding 0 $base-padding;
+  text-align: left;
+  color: #fff; 
 }
 
 .electritionWorksImg{
-    margin: -5.5% 35px 40px -4.5%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    flex: 1;
-    border-radius: 7px;
-    box-shadow: 0 0 10px #000;
+  margin: -5.5% 35px 40px -4.5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex: 1;
+  border-radius: 7px;
+  box-shadow: 0 0 10px #000;
 }
 
 .electricPowerWorks {
-    overflow-x: hidden;
-    flex: 1;
-    padding: 20px;
-    padding-right: 0;
+  overflow-x: hidden;
+  flex: 1;
+  padding: 20px;
+  padding-right: 0;
 }
 
 .electricPowerWorksHeader {
-    font-size: 1.3vw;
-    color: #d6d6d6;
-    text-shadow: 0.5px 0.5px rgb(0 153 154);
-    text-align: center;
-    letter-spacing: 0.5px;
-    margin: 10px 0 ;
-    
+  font-size: 1.3vw;
+  color: #d6d6d6;
+  text-shadow: 0.5px 0.5px rgb(0 153 154);
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin: 10px 0 ;
 }
-
 
 .electroWorksTransit {
   animation: 1s ease-out 0s 1 ElectroWorksWeDoTransit;
@@ -45,54 +42,47 @@
 .electricPowerWorks{
   .worksWeDoContainer {
     visibility: hidden;
+
     .worksWeDoWrapper {
-        animation: none;
-       
-        background-color: rgb(226 233 255);
-        color: rgb(25, 29, 41);
-        margin-left: 3% ;
-        margin-right: 0 ;
-        width: 29.5%;
-        .worksWeDoLogoWrapper{
-            .worksWeDoWrapperLogo{
-               
-                padding: 0;
-                
-            }
+      animation: none;
+      background-color: rgb(226 233 255);
+      color: rgb(25, 29, 41);
+      margin-left: 3% ;
+      margin-right: 0 ;
+      width: 29.5%;
+
+      .worksWeDoLogoWrapper {
+        .worksWeDoWrapperLogo{
+          padding: 0;    
         }
+      }
     }
   }
 }
 
 @keyframes ElectroWorksWeDoTransit{
-    0% {
-     
-      transform: translateX(100%);
-    }
-    100% {
-       
-      transform: translateX(0);
-    }
+  0% {
+    transform: translateX(100%);
   }
 
+  100% {
+    transform: translateX(0);
+  }
+}
 
+@include forSmallDesktop {
+  .electritionWorksWrapper {
+    padding: 2.5% $small-display-padding    ;
+  }
 
-  @include forSmallDesktop {
-  
+  .electricPowerWorks .worksWeDoContainer .worksWeDoWrapper {
+    width: 42.5%; 
+    margin: 3% 3% 3% 0;
+  }
 
-    .electritionWorksWrapper {
-         padding: 2.5% $small-display-padding    ;
-    }
-
-    .electricPowerWorks .worksWeDoContainer .worksWeDoWrapper {
-      width: 42.5%; 
-      margin: 3% 3% 3% 0;
-    }
-
-
-    .electritionWorksImg {
-      background-position: center center;
-      margin: 11% 20px 11% 0;
+  .electritionWorksImg {
+    background-position: center center;
+    margin: 11% 20px 11% 0;
   }
 
   .electricPowerWorksHeader {
@@ -113,7 +103,6 @@
 
   .electricPowerWorks .worksWeDoContainer .worksWeDoWrapper {
     width: 28.5%; 
-  
   }
 
   .electricPowerWorksHeader {
@@ -125,38 +114,29 @@
     min-height: 1vh;
     flex-direction: column;
     padding: 0;
-      
   }
 
-
   .electricPowerWorks {
-
     padding: 0 5%;
   }
 }
-  
 
-  @include for-mobile-design{
-    .electricPowerWorksHeader {
-      font-size: 3vw;
-      margin: 5% 0;
-    }
-
-    .electricPowerWorks {
-      padding: 2.5% $base-padding-mobile 0 $base-padding-mobile !important;
-    }
-
-    .electritionWorksImg{
-      min-height: 35vh;
-    }
-
-  
+@include for-mobile-design {
+  .electricPowerWorksHeader {
+    font-size: 3vw;
+    margin: 5% 0;
   }
 
+  .electricPowerWorks {
+    padding: 2.5% $base-padding-mobile 0 $base-padding-mobile !important;
+  }
 
+  .electritionWorksImg{
+    min-height: 35vh;
+  }
+}
 
-
- .imgLazyLoaderElectritionMainImg {
+.imgLazyLoaderElectritionMainImg {
   border: 7px solid #9eddff;
   border-top: 7px solid #3498db;
   border-radius: 50%;
@@ -167,4 +147,4 @@
   margin: 10px auto;
   flex: none;
   overflow: hidden;
- }
+}

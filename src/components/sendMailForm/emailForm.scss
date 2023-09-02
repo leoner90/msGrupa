@@ -3,20 +3,20 @@
 input[type=text], select, textarea,
 input[type=email],
 input[type=number] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-  }
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
  
 
 #loaderWrapper,
 #SuccesWrapper {
- flex-direction: column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -32,7 +32,6 @@ input[type=number] {
 .success {
   color: green;
   font-size: 1vw;
- 
 }
 
 .errorAwesomeIcon {
@@ -60,7 +59,7 @@ input[type=number] {
 }
 
 .errMsgAligner {
- padding: 5px 0 ;
+  padding: 5px 0 ;
   text-align: left;
   min-height: 1px;
 }
@@ -85,56 +84,58 @@ input[type=number] {
 }
 
   /* To center the spinner*/
-  .pos-center {
-    position: fixed;
-    top: calc(50% - 40px);
-    left: calc(50% - 40px);
-  }
+.pos-center {
+  position: fixed;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+}
   
-  .loader{
-    border: 7px solid #9eddff;
-    border-top: 7px solid #3498db;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-  }
+.loader{
+  border: 7px solid #9eddff;
+  border-top: 7px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
 
 .formFullNameWrapper {
-    display: flex;
+  display: flex;
 }
 
 .formFullNameWrapper > input,
 .formFullNameWrapper > textarea {
-    flex: 1;
-    margin: 0;
-    border: none !important;
-    border-right: 1px solid #ccc !important;
-    border-radius: 0;
+  flex: 1;
+  margin: 0;
+  border: none !important;
+  border-right: 1px solid #ccc !important;
+  border-radius: 0;
 }
 
 .formFullNameWrapper > textarea {
-    min-height: 120px;
+  min-height: 120px;
 }
 
 .formFullNameWrapper > input::placeholder,
 .formFullNameWrapper > textarea::placeholder  {
-    color: #ccc;
+  color: #ccc;
 }
 
 .ContactFormSubmitBtn {
-    background-color: #2b9b1f ;
-    font-weight: bold;
-    width: 100%;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    &:hover {
-      background-color: #217518 ;
-    }
+  background-color: #2b9b1f ;
+  font-weight: bold;
+  width: 100%;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #217518 ;
+  }
 }
+
 //Animation
 @keyframes spin {
   0% {
@@ -144,60 +145,55 @@ input[type=number] {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
-      -webkit-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
   
-  .NameSectionWrapper {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
- 
-  }
+.NameSectionWrapper {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
 
-  .NameLabel {
-    padding: 6px 12px;
-    color: #888;
-    background-color: #fff;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-  }
+.NameLabel {
+  padding: 6px 12px;
+  color: #888;
+  background-color: #fff;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
 
-  .faEnvelopeSendMsg {
-    margin-right: 10px;
-    transform: rotate(1deg);
-  }
+.faEnvelopeSendMsg {
+  margin-right: 10px;
+  transform: rotate(1deg);
+}
 
+.emailFormWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
+.emailForm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
- 
+.messageWraper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 
-  .emailFormWrapper {
-    display: flex;
-    flex-direction: column;
+  .textAreaWrapper , textarea {
     height: 100%;
   }
-
-  .emailForm {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .messageWraper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    .textAreaWrapper , textarea {
-      height: 100%;
-    }
-  }
-
-
+}
 
   @include forSmallDesktop {
     .errMsg,
@@ -207,41 +203,30 @@ input[type=number] {
     }
   }
   
-  @include for-tablet-design {
-    .recaptchaClass {
-   
-      margin: 0 auto;
-      
-    }
-
-    
-    .errMsg,
-    .success,
-    .errorAwesomeIcon{
-      font-size: 1.7vw;
-    }
-  }
-  
-  @include for-mobile-design {
-    .errMsg,
-    .success,
-    .errorAwesomeIcon{
-      font-size: 3vw;
-    }
-  }
-
+@include for-tablet-design {
   .recaptchaClass {
-   
-    // margin-left: 100%;
-    // transform: translateX(-100%);
-    
+    margin: 0 auto;    
   }
 
-  .grecaptcha-badge {
-    // box-shadow: none !important;
-    // position: static !important;
-    margin: 10px;
+  .errMsg,
+  .success,
+  .errorAwesomeIcon{
+    font-size: 1.7vw;
   }
+}
+  
+@include for-mobile-design {
+  .errMsg,
+  .success,
+  .errorAwesomeIcon{
+    font-size: 3vw;
+  }
+}
+
+.grecaptcha-badge {
+    margin: 10px;
+}
+
 .grecaptcha-badge {
   margin-left: 0;
   margin-right: 0;

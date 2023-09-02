@@ -20,28 +20,25 @@ function AboutSection() {
 			img.src = src
 			img.onload = () => setImagesAreLoaded(true)
 		}, [src])
+
 		return (
 			<div>
-			{imagesAreLoaded 
-				? 
-					<div  className='aboutSectionSlider SliderWrap' style={{backgroundImage: 'url("./img/headerSlider/'+props.item.imgName + '"'}}  >
-						<div className="dimmer"></div>
-					</div>
-				:
-					<div className='imgLazyLoaderAbout' > </div> 
-			  }
+				{imagesAreLoaded 
+					? 
+						<div  className='aboutSectionSlider SliderWrap' style={{backgroundImage: 'url("./img/headerSlider/'+props.item.imgName + '"'}}  >
+							<div className="dimmer"></div>
+						</div>
+					:
+						<div className='imgLazyLoaderAbout' > </div> 
+				}
 			</div>
 		)
 	}
  
-
-
 	return (
 		<div id="home" className="AboutWrapper" >
 			<SliderAbout {...slickSettingAboutSection}>
 				{AboutPageSliderImg.map(function(item, i){
-		 
-
 					return (
 						<div  key={i}  >
 							<AboutSectionSliderImg  item= {item}/>
@@ -49,14 +46,15 @@ function AboutSection() {
 					)
 				})}
 			</SliderAbout>
+
 			<div className='HomeFirstSectionWrapper'>
 				<div className='HomeAboutText'>
-						<h1 className="textAnimation">
-							{content.headerText }
-						</h1>
-						<Link to={`contacts`}  smooth={true}>
-							<button className='contactsBtn'> { content.btn}</button>
-						</Link>
+					<h1 className="textAnimation">
+						{content.headerText }
+					</h1>
+					<Link to={`contacts`}  smooth={true}>
+						<button className='contactsBtn'> { content.btn}</button>
+					</Link>
 				</div>
 			</div>
 		</div>

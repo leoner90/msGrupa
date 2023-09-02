@@ -11,11 +11,11 @@ function HomePageProjects (props) {
         const img = new Image()
         img.src = src
         img.onload = () => setImagesAreLoaded(true)
-      }, [src])
+    }, [src])
 
     return (
         <div className={imagesAreLoaded ? 'homePageProjectWrapper' : 'imgLazyLoaderGallery' } 
-        style={imagesAreLoaded ? {backgroundImage: 'url("./img/workImg/'+ props.imgName + '"'}: {}}
+            style={imagesAreLoaded ? {backgroundImage: 'url("./img/workImg/'+ props.imgName + '"'}: {}}
         >
             
             <div className='itemInfo '>
@@ -23,7 +23,7 @@ function HomePageProjects (props) {
                 <h4 className='itemInfoHeader'>{props.header}</h4>
                 <h4 className='itemInfoBody'>{props.bodyText}</h4>
             </div>
- 
+            
         </div>
     )
 }

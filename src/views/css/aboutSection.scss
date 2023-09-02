@@ -1,242 +1,217 @@
- 
- 
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@1,200&display=swap');
- 
+ @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@1,200&display=swap');
 @import '../../variables';
 
 .HomeFirstSectionWrapper {
-    align-items: center;
-    flex: 1;
-    padding: 0 $base-padding;
+  align-items: center;
+  flex: 1;
+  padding: 0 $base-padding;
 }
 
 .AboutWrapper {
-    position: relative;
+  position: relative;
 }
 
 .contactsBtn {
-    animation: 0.75s ease-out 0s 1 getBtn;
-    font-family: 'Source Serif 4', serif;
-    padding: 5px 7px;
-    border-radius: 10px;
-    border: 1px solid #002b02;
-    text-shadow: 1px 1px #000000;
-    background-color:#3d7b00;  
-    color: #fff;
-    font-weight: bold;
-    min-width: 200px;
-    max-width: 200px;
-    font-size: 1.2vw;
-    cursor: pointer;
-    justify-content: center;
-    margin-top: 20px;
-    &:hover {
-        background-color:#428301;  
-    }
+  animation: 0.75s ease-out 0s 1 getBtn;
+  font-family: 'Source Serif 4', serif;
+  padding: 5px 7px;
+  border-radius: 10px;
+  border: 1px solid #002b02;
+  text-shadow: 1px 1px #000000;
+  background-color:#3d7b00;  
+  color: #fff;
+  font-weight: bold;
+  min-width: 200px;
+  max-width: 200px;
+  font-size: 1.2vw;
+  cursor: pointer;
+  justify-content: center;
+  margin-top: 20px;
+
+  &:hover {
+      background-color:#428301;  
+  }
 }
 
 .textAnimation {
-    animation: 0.75s ease-out 0s 1 getText;
-    white-space: pre-line;
+  animation: 0.75s ease-out 0s 1 getText;
+  white-space: pre-line;
 }
 
 .textAnimation{
   font-size: 2.2vw;
   font-weight: 100;
 }
-.HomeAboutText {
 
-    // position: absolute;
-    flex-direction: column;
-    z-index: 2;
-    font-family: 'Source Serif 4', serif;
-    color: #fff;
-    font-size: 2.2vw;
-    text-align: left;
-    letter-spacing: 1px;
-    text-shadow: 0.5px 0.5px #73d216;
-    padding: 1.5% 2% ;
-    background: #00000028;
-    border-radius: 8px;
-    box-shadow: 0 0 3px #000000b9;
+.HomeAboutText {
+  flex-direction: column;
+  z-index: 2;
+  font-family: 'Source Serif 4', serif;
+  color: #fff;
+  font-size: 2.2vw;
+  text-align: left;
+  letter-spacing: 1px;
+  text-shadow: 0.5px 0.5px #73d216;
+  padding: 1.5% 2% ;
+  background: #00000028;
+  border-radius: 8px;
+  box-shadow: 0 0 3px #000000b9;
 }
 
 .aboutSectionSlider {  
-    background-color: #ccc;
-    background-size: cover;
-    background-position: center center;
-    min-height: 70vh;
+  background-color: #ccc;
+  background-size: cover;
+  background-position: center center;
+  min-height: 70vh;
 }
 
-
-
-
-
-  .AboutWrapper .slick-current {
-     animation: zoomssr 6s ease-out 0s 1 forwards ;
-  }
+.AboutWrapper .slick-current {
+  animation: zoomssr 6s ease-out 0s 1 forwards ;
+}
   
 //ANIMATION
 @keyframes zoomssr {
-   
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.15);
-    }
-  }
-  
-  .dimmer {
-    background-color: rgba(0, 0, 0, 0.15);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0; 
+  0% {
+      transform: scale(1);
   }
 
-  .SliderWrap {
+  100% {
+      transform: scale(1.15);
+  }
+}
+  
+.dimmer {
+  background-color: rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; 
+}
+
+.SliderWrap {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+
+.AboutWrapper {
+  min-height: 70vh;
+  display: flex;
+  
+  * {
+      display: flex !important;
+      flex: 1;
+  }
+
+  .slick-slider {
+    position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
- }
+  }
+}
 
+@include forSmallDesktop {
+  .HomeFirstSectionWrapper {
+        padding: 0   $small-display-padding ;
+  }
+  
+  .HomeAboutText,
+  .textAnimation {
+    font-size: 2.8vw;
+  }
 
-.AboutWrapper {
-    min-height: 70vh;
+  .aboutSectionSlider, .AboutWrapper{ 
+      min-height: 50vh ;
+  }
+}
+  
+@include for-tablet-design {
+  .AboutWrapper {
+    padding: 0  $base-padding-tablet;
     display: flex;
-    slick-slider {
-        
-    }
-    * {
-        display: flex !important;
-        flex: 1
-        ;
-    }
-  
-
-    .slick-slider {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-    }
- 
-}
-
-
-
-  @include forSmallDesktop {
-    .HomeFirstSectionWrapper {
- 
-         padding: 0   $small-display-padding ;
-    }
-  
-    .HomeAboutText,
-    .textAnimation {
-      font-size: 2.8vw;
-    }
-    .aboutSectionSlider, .AboutWrapper{ 
-        min-height: 50vh ;
-    }
+    justify-content: center;
   }
-  
-  @include for-tablet-design {
-    .AboutWrapper {
- 
-        padding: 0  $base-padding-tablet;
-        display: flex;
-        justify-content: center;
-   }
 
-   .contactsBtn {
+  .contactsBtn {
     font-size: 2.5vw;
-   }
- 
+  }
+}
+  
+@include for-mobile-design {
+  .dimmer {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .contactsBtn {
+    font-size: 3vw;
+  }
+
+  .HomeAboutText, 
+  .textAnimation {
+    font-size: 4vw;
+  }
+
+  .AboutWrapper  {
+    padding: 0 $base-padding-mobile ;
   }
   
-  @include for-mobile-design {
-    .dimmer {
-        background-color: rgba(0, 0, 0, 0.1);
-    }
+  .CompanyName,
+  .navBarLinksWrapper > a {
+    font-size: 3.5vw;
+  }
 
-    .contactsBtn {
-        font-size: 3vw;
-    }
-
-    .HomeAboutText, 
-    .textAnimation {
-        font-size: 4vw;
-    }
-
-    .AboutWrapper  {
-        padding: 0 $base-padding-mobile ;
-    
-        
-    }
-  
-    .CompanyName,
-    .navBarLinksWrapper > a {
-      font-size: 3.5vw;
-    }
-
-
-
-    .aboutSectionSlider, .AboutWrapper { 
-        min-height: 75vh !important;
-    }
+  .aboutSectionSlider, .AboutWrapper { 
+    min-height: 75vh !important;
+  }
 }
-
 
 @keyframes getBtn {
     0% {
       opacity: 0;
       transform: translateX(100%)
- 
     }
+
     100% {
       opacity: 1;
       transform: none;
-      
     }
   }
 
-  @keyframes getText {
-    0% {
-      opacity: 0;
-      transform: translateX(-100%)
- 
-    }
-    100% {
-      opacity: 1;
-      transform: none;
-      
-    }
+@keyframes getText {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%)
   }
 
-  .imgLazyLoaderAbout {
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
+  100% {
+    opacity: 1;
+    transform: none; 
+  }
+}
+
+.imgLazyLoaderAbout {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #060606;
+  animation: aboutWrapperLoaderColor 3.5s linear infinite;
+}
+
+@keyframes aboutWrapperLoaderColor {
+  0% {
     background-color: #060606;
-    animation: aboutWrapperLoaderColor 3.5s linear infinite;
   }
 
-  @keyframes aboutWrapperLoaderColor {
-    0% {
-      background-color: #060606;
- 
-    }
-    50% {
-      background-color: #272727;
-      
-    }
-
-    100% {
-      background-color: #060606;
- 
-    }
+  50% {
+    background-color: #272727; 
   }
+
+  100% {
+    background-color: #060606;
+  }
+}

@@ -8,6 +8,9 @@ import {setCookie, getCookie} from "./cookiesSetter.js"
 
 function HeaderInfoBar() {
   const dispatch = useDispatch();
+  let isCookiesAgreed = getCookie("isCookiesAgreed");
+  let language = getCookie("currentLanguage");
+
   function fontAwesome(value, className) {
       return <FontAwesomeIcon className={className} icon={value} />
   }
@@ -18,9 +21,6 @@ function HeaderInfoBar() {
     el.classList.add('displayNone');  
   }
      
-  let isCookiesAgreed = getCookie("isCookiesAgreed");
-  let language = getCookie("currentLanguage");
-      
   useEffect(()=>{
     dispatch(setLanguage(language));
   }, [language,dispatch]);

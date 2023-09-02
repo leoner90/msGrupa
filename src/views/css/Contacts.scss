@@ -1,15 +1,13 @@
 @import '../../variables';
 
-
 .Contacts {
   padding-bottom: 4%;
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .contactsContainer {
   padding: 3.5%  $base-padding 100px $base-padding;
-
 }
 
 .contactSlotText {
@@ -24,31 +22,29 @@
 }
   
 .ContactsWrapper {
-    padding: 9px 25px;
-    padding-right: 0;
-    border-radius: 3px;
-    font-size: 1vw;
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
- 
+  padding: 9px 25px;
+  padding-right: 0;
+  border-radius: 3px;
+  font-size: 1vw;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
 }
  
-
 .ContactsWrapper > div {
-    padding-bottom: 3px;
-    box-shadow: 0 4px 2px -3px #dae2e9;
-    flex: 1 90%;
-    display: flex;
-    align-items: center;
-    margin: 3.5%;
+  padding-bottom: 3px;
+  box-shadow: 0 4px 2px -3px #dae2e9;
+  flex: 1 90%;
+  display: flex;
+  align-items: center;
+  margin: 3.5%;
 }
 
 .ContactFormHeader {
-    color: #03898b;
-    font-size: 1.4vw;
-    text-align: center;
-    margin: 12px 0;
+  color: #03898b;
+  font-size: 1.4vw;
+  text-align: center;
+  margin: 12px 0;
 }
 
 .FormContainer {
@@ -84,14 +80,10 @@
   margin: 0 ;
 }
 
- 
- 
 .contactSlotText >p{
   font-size: 0.9vw;
 }
  
- 
-
 @include forSmallDesktop {
   .contactsContainer {
     padding: 3.5%  $small-display-padding 100px $small-display-padding !important;
@@ -117,35 +109,31 @@
     padding: 3.5%  $base-padding-tablet 100px $base-padding-tablet !important;
   }
 
- 
-  .contactsFontAwesome
-  {
+  .contactsFontAwesome {
     font-size: 3.5vw !important;
   }
 
   .Contacts {
-   
     flex-direction: column;
   }
+
   .googleMapWrapper {
     margin: 0 5%;
   }
 
   .contactSlotText {
     font-size: 1.6vw;
+
     &>p {
       font-size: 1.6vw;
       margin: 10px 0;
     }
   }
-
 }
 
 .contactSlotHeader {
   margin: 5px 0;
 }
-
-
 
 @include for-mobile-design {
   .contactsContainer {
@@ -157,7 +145,6 @@
     font-size: 2.5vw;
   }
   
-
   .ContactFormHeader {
     font-size: 3vw;
   }

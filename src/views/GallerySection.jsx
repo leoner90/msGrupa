@@ -8,12 +8,9 @@ import { useState,useEffect } from "react";
 import './css/gallery.scss'
 import  {GalleryContentByLanguage} from "./MultiLanguageContent/MultiLanguageContentGenerator.jsx";
 
-
 function GallerySection() {
   let content = GalleryContentByLanguage();
   const [ServerCall] = useGetGalleryMutation();
-
- 
   const [currentImg, setCurrentImg] = useState(false);
   const [showModal, setShowModal] = useState(false);
   let allImages = useSelector(state => state.sliderImages.allImages);
@@ -28,7 +25,6 @@ function GallerySection() {
     document.body.style.overflow = 'hidden';
     document.getElementById("html").style.overflow = 'hidden';
   }
-
  
   return (
     <div id="portfolio" className='gallerySectionWrapper'>

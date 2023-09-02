@@ -25,7 +25,6 @@
 }
 
 .worksWeDoContainer {
-    
     display: flex;
     flex-wrap: wrap;
     border-bottom: 3px dotted #ccc;
@@ -51,11 +50,9 @@
     visibility:visible !important;
 }
 
-
- 
-  @include forSmallDesktop {
+@include forSmallDesktop {
     .solarWorksSectionWrapper {
-         padding: 2.5% $small-display-padding ;
+        padding: 2.5% $small-display-padding ;
     }
 
     .solarPowerWorksImg {
@@ -92,12 +89,10 @@
         min-height: 50vh;
         margin: 8% 20px 8% 20px;
     }
-
-  }
+}
   
 
-  @include for-mobile-design{
-
+@include for-mobile-design{
     .SolarPowerWorksHeader {
         font-size: 3vw;
     }
@@ -110,22 +105,21 @@
     .solarWorksSectionWrapper {
         padding: 2.5% $base-padding-mobile !important;
    }
+}
 
-   
-  }
-
-  @keyframes SolarWorksWeDoTransit{
+@keyframes SolarWorksWeDoTransit {
     0% {
      
       transform: translateX(-100%);
     }
+
     100% {
        
       transform: translateX(0);
     }
-  }
+}
 
-  .imgLazyLoaderSolarMainImg {
+.imgLazyLoaderSolarMainImg {
     border: 7px solid #9eddff;
     border-top: 7px solid #3498db;
     border-radius: 50%;
@@ -136,12 +130,12 @@
     margin: 10px auto;
     flex: none;
     overflow: hidden;
-   }
+}
 
-   .flexItem {
+.flexItem {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-   }
+}

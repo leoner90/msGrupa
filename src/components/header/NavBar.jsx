@@ -1,5 +1,4 @@
 import './header.scss';
-
 import { faBars , faCaretRight} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from "react";
@@ -15,7 +14,7 @@ function NavBar() {
     //LINK GENERETOR
     function linkGenerator( id , name){
         return (   
-            <Link to={id} spy={true} hashSpy={true} smooth={true} offset={-70} duration={500}  onClick={() => { showMobileNavBar();}}  > 
+            <Link to={id} spy={true} hashSpy={true} smooth={true} offset={-70} duration={500}  onClick={() => { showMobileNavBar();}}> 
                 <FontAwesomeIcon className='caretForMobileMenu'  icon={faCaretRight} />
                 {name}
             </Link>

@@ -1,9 +1,7 @@
 import SetObserver from './js/observer.js'
-// import { Link } from "react-scroll";
 import React, { useState, useEffect } from "react";
 import  {MapContentByLanguage} from "./MultiLanguageContent/MultiLanguageContentGenerator.jsx";
 import './css/mapSection.scss'
- 
 
 function MapSection() {
   let content = MapContentByLanguage();
@@ -50,14 +48,14 @@ function MapSection() {
       }
     }
 
-  try {
-    SetObserver('stepsContentWrapper', 0.3 , 0, observerCallBack);
-    SetObserver('clientCountProgressBars', 0.3 , 0, observerCallBack2);
-  } catch (error) {
-    observerCallBack();
-    observerCallBack2();
-  }
-}, []);
+    try {
+      SetObserver('stepsContentWrapper', 0.3 , 0, observerCallBack);
+      SetObserver('clientCountProgressBars', 0.3 , 0, observerCallBack2);
+    } catch (error) {
+      observerCallBack();
+      observerCallBack2();
+    }
+  }, []);
 
   function StepsSection (body,id,imgLink) {
     const [imagesAreLoaded, setImagesAreLoaded] = useState(false);
@@ -72,14 +70,12 @@ function MapSection() {
     return (
       <div id={id} className='stepsContentWrapper'>
         <div className='stepsImgWrapper'>
-        {imagesAreLoaded 
-          ? 
-          <img className='stepsImg' src={imgLink} alt="asd"  />
-          :
-              <div className='imgLazyLoaderStepsImg' > </div> 
-        }
-
-         
+          {imagesAreLoaded 
+            ? 
+            <img className='stepsImg' src={imgLink} alt="asd"  />
+            :
+                <div className='imgLazyLoaderStepsImg' > </div> 
+          }
         </div>
         <h4 className='stepsHeader'> {body}</h4>
       </div>
@@ -97,13 +93,13 @@ function MapSection() {
   function ProgressBar (progressbarHeader,clientsCount) {
     return (
       <div>
-      <p className='progressbarHeader'>{progressbarHeader}</p>
-      <div className='progressBarOuter'>
-        <div className='progressBarInner ' >
-          <div className='percentage'> {clientsCount} + </div>
+        <p className='progressbarHeader'>{progressbarHeader}</p>
+        <div className='progressBarOuter'>
+          <div className='progressBarInner ' >
+            <div className='percentage'> {clientsCount} + </div>
+          </div>
         </div>
       </div>
-    </div>
     )
   }
 
@@ -112,8 +108,6 @@ function MapSection() {
       <div>
         <h3 className='mapSectionHeader'>{content.mapSectionHeader}</h3>
         <div className='stepsToPerformSolarOrderWrapper'>
-          {/* <Link to={`contacts`}  smooth={true} >
-          </Link> */}
           {StepsSection (content.stepsHeader1,'stepsContentWrapper' , './img/priceList.png')}
           {ArrowSection()}
           {StepsSection (content.stepsHeader2,'' , './img/agreementLogo.png')}
@@ -128,7 +122,7 @@ function MapSection() {
             <img className='LvmapImg' src="./img/LVmap.jpg" alt='LVmap'/>
           :
             <div className='MapflexItem'> <div className='imgLazyLoaderLvmapImg' > </div> </div>
-        }
+      }
       
       <div className='flex'>
         <div className='clientCount'>

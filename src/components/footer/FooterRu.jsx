@@ -11,6 +11,7 @@ import  {ContactsContentByLanguage, NavBarContentByLanguage} from "../../views/M
 function Footer() {
   let content = ContactsContentByLanguage();
   let navBarContent = NavBarContentByLanguage();
+
   function fontAwesome(value, className) {
     return <FontAwesomeIcon className={className} icon={value} />
   }
@@ -18,8 +19,8 @@ function Footer() {
   function linkGenerator(id, name){
     return (
       <Link to={id} smooth={true} offset={-150} duration={500} >
-          {fontAwesome(faCaretRight, 'footeMenuFontAwesome')}
-          {name}
+        {fontAwesome(faCaretRight, 'footeMenuFontAwesome')}
+        {name}
       </Link>
     )
   }
@@ -34,7 +35,6 @@ function Footer() {
     } catch (error) {
       observerCallBack();
     }
-   
   }, []);
 
   function ContactSlot (icon, headerText, body) {
@@ -66,9 +66,7 @@ function Footer() {
             </div>
             <div className='footerContactSlotText'>
               <h4 className='footerContactSlotHeader'>{content.contactSlotHeader} </h4>
-              <p>
-                {content.contactSlotBody}
-              </p>
+              <p> {content.contactSlotBody} </p>
             </div>
           </div>
         </div>  

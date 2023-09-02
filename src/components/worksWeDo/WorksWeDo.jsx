@@ -13,8 +13,6 @@ function WorksWeDo(props) {
     return (
         <div className='worksWeDoWrapper'>
             <div className='worksWeDoLogoWrapper'>
-    
-
                 {imagesAreLoaded 
                 ? 
                     <img    alt= "works we do" className='worksWeDoWrapperLogo' src={"./img/WorksWeDo/" + props.imgName}  />

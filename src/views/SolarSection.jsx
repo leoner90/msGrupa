@@ -7,17 +7,14 @@ import  {SolarContentByLanguage} from "./MultiLanguageContent/MultiLanguageConte
 function SolarSection() {
   let content = SolarContentByLanguage();
   let animationTrigerEl = "solarWorks";
-
   const [imagesAreLoaded, setImagesAreLoaded] = useState(false);
-    let src =  "./img/solarPowerMain.jpeg";
+  let src =  "./img/solarPowerMain.jpeg";
 
     useEffect(() => {
         const img = new Image()
         img.src = src
         img.onload = () => setImagesAreLoaded(true)
     }, [src])
-
-
 
   if(window.innerWidth < 768){
     animationTrigerEl = "animationActivation";
@@ -33,8 +30,6 @@ function SolarSection() {
     } catch (error) {
       observerCallBack();
     }
-
-   
   }, [animationTrigerEl]);
 
   return (
@@ -51,13 +46,11 @@ function SolarSection() {
       </div>
 
       {imagesAreLoaded 
-          ? 
-            <div id="animationActivation" className='solarPowerWorksImg' style={{backgroundImage: 'url("./img/solarPowerMain.jpeg"'}}></div>
-          :
-            <div className='flexItem'> <div id="animationActivation"  className='imgLazyLoaderSolarMainImg' > </div> </div>
-        }
-
-     
+        ? 
+          <div id="animationActivation" className='solarPowerWorksImg' style={{backgroundImage: 'url("./img/solarPowerMain.jpeg"'}}></div>
+        :
+          <div className='flexItem'> <div id="animationActivation"  className='imgLazyLoaderSolarMainImg' > </div> </div>
+      }
     </div>
   )
 }

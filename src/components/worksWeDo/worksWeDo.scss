@@ -17,19 +17,15 @@
     box-shadow: 0 0 15px rgb(0 153 154);
 }
 
-
-
 .worksWeDoWrapperLogo {
-  
-    transform: rotate(2deg);
-    width: 76%;
-    margin: 0 auto;
-    padding: 12%;
-    height: auto;
-    border-bottom: 1px solid transparent ;
+  transform: rotate(2deg);
+  width: 76%;
+  margin: 0 auto;
+  padding: 12%;
+  height: auto;
+  border-bottom: 1px solid transparent ;
 }
 
- 
 .worksWeDoLogoWrapper {
   flex: 2;
   display: flex;
@@ -37,7 +33,6 @@
   align-items: center;
   justify-content: center;
 }
-
 
 .worksWeDoHeader {
   flex: 1;
@@ -51,30 +46,25 @@
   text-transform: uppercase;
 }
 
-
 @keyframes worksWeDoTransit{
   0% {
     transform: translateX(-200%);
   }
+
   100% {
     transform: translateX(0);
   }
 }
 
-
-
-
 @include forSmallDesktop{
   .worksWeDoWrapper{
     width: 42.5%;
-    
   }
 
   .worksWeDoHeader {
     font-size: 1.2vw;
       padding: 15px 5px;
   }
-
 }
 
 @include for-tablet-design {
@@ -87,22 +77,17 @@
   }
 }
 
-
 @include for-mobile-design{
   .worksWeDoWrapper{
     margin-left: 2% !important;
     margin-right: 2% !important;
   }
 
- 
-
   .worksWeDoHeader {
     padding: 10px 5px;
     font-size: 1.9vw;
+  }
 }
-
-}
-
 
 .imgLazyLoaderWorksWeDo {
   border: 7px solid #9eddff;
@@ -111,7 +96,6 @@
   width: 60px;
   height: 60px;
   animation: spinLoader 1s linear infinite;
-  // z-index: 999;
   margin: 0 auto;
   margin: 40px auto;
 }
