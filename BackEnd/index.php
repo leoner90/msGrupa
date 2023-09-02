@@ -1,5 +1,6 @@
 <?php
 $clientName = $_SERVER['HTTP_ORIGIN'];
+// $clientNameAllowed = array('http://localhost:3000', 'http://www.localhost:3000', 'https://localhost:3000', 'https://www.localhost:3000');
 $clientNameAllowed = array('http://msgrupa.lv', 'http://www.msgrupa.lv', 'https://msgrupa.lv', 'https://www.msgrupa.lv');
 
 foreach ($clientNameAllowed as $name) {
@@ -10,6 +11,7 @@ foreach ($clientNameAllowed as $name) {
 }
 
 //Header
+// header("Access-Control-Allow-Origin:  http://localhost:3000");
 header("Set-Cookie: cross-site-cookie=whatever; SameSite=None; Secure");
 define("PROJECT_ROOT_PATH", __DIR__ . "/");
 

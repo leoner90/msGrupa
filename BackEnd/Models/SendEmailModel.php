@@ -15,32 +15,32 @@ class SendEmailModel
         $errors = false;
           //CHECKS
         if  (trim($msg) == ''){
-            $errors['ru'][] = 'Введите Сообщение';
-            $errors['lv'][] = 'Ievadiet ziņojumu';
+            $errors['errors']['ru'][] = 'Введите Сообщение';
+            $errors['errors']['lv'][] = 'Ievadiet ziņojumu';
         }
 
         if  (trim($phone ) == ''){
-            $errors['ru'][] = 'Введите Номер Телефона';
-            $errors['lv'][] = 'Ievadiet tālruņa numuru';
+            $errors['errors']['ru'][] = 'Введите Номер Телефона';
+            $errors['errors']['lv'][] = 'Ievadiet tālruņa numuru';
         }
 
         if  (trim($name) ==''){
-            $errors['ru'][] = 'Введите Имя';
-            $errors['lv'][] = 'Ievadiet vārdu';
+            $errors['errors']['ru'][] = 'Введите Имя';
+            $errors['errors']['lv'][] = 'Ievadiet vārdu';
         }
 
         if  (trim($surname) ==''){
-            $errors['ru'][] = 'Введите Фамилию';
-            $errors['lv'][] = 'Ievadiet Uzvārdu';
+            $errors['errors']['ru'][] = 'Введите Фамилию';
+            $errors['errors']['lv'][] = 'Ievadiet Uzvārdu';
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)  OR  trim($email) == '' ) {
-            $errors['ru'][] = 'Ваш Емейл неверен';
-            $errors['lv'][] = 'Jūsu e-pasts ir nepareizs';
+            $errors['errors']['ru'][] = 'Ваш Емейл неверен';
+            $errors['errors']['lv'][] = 'Jūsu e-pasts ir nepareizs';
         }
 
         $url = 'https://www.google.com/recaptcha/api/siteverify';
-        $data = ['secret'   => 'secret captcha key',
+        $data = ['secret'   => 'Captcha Secret Key Here',
                     'response' =>  $token];
                     
         $options = [
@@ -55,13 +55,15 @@ class SendEmailModel
         $result = file_get_contents($url, false, $context);
         $isHuman = json_decode($result)->success;
         if(!$isHuman) {
-            $errors['lv'][] = 'Jūs neesat izturējis ReCaptcha verifikāciju';
-            $errors['ru'][] = 'Вы не прошли верификацию ReCaptcha';
+            $errors['errors']['lv'][] = 'Jūs neesat izturējis ReCaptcha verifikāciju';
+            $errors['errors']['ru'][] = 'Вы не прошли верификацию ReCaptcha';
         }
+            
+        if ($errors) { $errors['success'] = 'error';}
         return $errors;
     }
 
-    public function sendMail( $name, $surname, $msg, $email, $phone, ) 
+    public function sendMail( $name, $surname, $msg, $email, $phone ) 
     {
         //Create an instance; passing `true` enables exceptions
        $mail = new PHPMailer(true);
@@ -71,11 +73,12 @@ class SendEmailModel
            $mail->Host       = ' smtp.gmail.com ';   
            $mail->SMTPAuth   = true; 
            $mail->Username   = 'msgrupa.lv@gmail.com';
-           $mail->Password   = 'SMTP KEY HERE';
+           $mail->Password   = 'SMTP Secret Key Here';
            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
            $mail->Port       = 465; 
            $mail->SMTPSecure = "ssl";
-       
+           $mail->CharSet = "UTF-8";
+
            //Recipients
            $mail->setFrom('info@msgrupa.lv', 'MsGrupa');
            $mail->addAddress('leonid.gurockin@gmail.com', 'MsGrupa');
@@ -85,30 +88,57 @@ class SendEmailModel
        
            //Content
            $mail->isHTML(true); 
-           $mail->Subject = 'New Message From Msgrupa';
+           $mail->Subject = 'Новое сообщение от MsGrupa.lv';
 
            $message = "
            <html> 
+     
+            
+
+         
            <body color=\"#999\"> 
-               <h4 style='color:green;'>
-                   НОВОЕ СООБЩЕНИЕ ОТ:  
-                   <p style='color:red; margin: 3px;'>Email: ".$email." </p>
-                   <p style='color:red; margin: 3px;'>ИМЯ ФАМИЛИЯ: ".$name." ".$surname." </p>
-                   <p style='color:red; margin: 3px;'>НОМЕР ТЕЛЕФОНА: ".$phone." </p>
-               </h4>
+                <hr>
+               <h4> НОВОЕ СООБЩЕНИЕ ОТ MSGRUPA.LV: </h4>
                <hr>
-               <h4> СООБЩЕНИЕ: </h4>
-               <pre style='color:black'; padding:10px; font-size: 1.5vw;>".$msg." </pre> 
+               <table>
+                    <tr style='background-color: #dddddd;'>
+                        <th style='border: 1px solid #dddddd; padding: 8px;'>E-mail</th>
+                        <th style='border: 1px solid #dddddd; padding: 8px;'>ИМЯ</th>
+                        <th style='border: 1px solid #dddddd; padding: 8px;'>ФАМИЛИЯ</th>
+                        <th style='border: 1px solid #dddddd; padding: 8px;'>ТЕЛЕФОНА</th>
+                    </tr>
+                    <tr>
+                        <td style='border: 1px solid #dddddd; padding: 8px;'>".$email."</td>
+                        <td style='border: 1px solid #dddddd; padding: 8px;'>".$name."</td>
+                        <td style='border: 1px solid #dddddd; padding: 8px;'>".$surname."</td>
+                        <td style='border: 1px solid #dddddd; padding: 8px;'>".$phone."</td>
+                    </tr>
+                    <tr>
+                        <th colspan='4' style='text-align: center; border: 1px solid #dddddd; background-color: #dddddd;'>СООБЩЕНИЕ</th>
+                    </tr>
+                    <tr>
+                        <td colspan='4' style='border: 1px solid #dddddd; padding: 8px;'>".$msg."</td>
+                    </tr>
+                </table>
+
+
            </body> 
            </html>"; 
 
            $mail->Body    = $message;
            $mail->AltBody = $message;
            $mail->send();
-           return true;
+           $errors = false;
+
+        $status['errors'] = false;
+        $status['success'] = 200;
+
+        return $status;
 
        } catch (Exception $e) {
         return "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
        }
     }
+
+
 }

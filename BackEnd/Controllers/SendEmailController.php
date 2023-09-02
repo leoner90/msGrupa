@@ -17,11 +17,6 @@ class SendEmailController extends BaseController
             $send = $SendEmailModel->sendMail($name, $surname, $msg, $email, $phone);
             if($send){
                 $this->sendOutput(
-                    json_encode(200),
-                    array('Content-Type: application/json', 'HTTP/1.1 200 OK')
-                );
-            } else {
-                $this->sendOutput(
                     json_encode($send),
                     array('Content-Type: application/json', 'HTTP/1.1 200 OK')
                 );
